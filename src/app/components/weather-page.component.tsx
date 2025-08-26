@@ -213,9 +213,9 @@ export default function WeatherPage() {
                       </h3>
                     </div>
                     
-                    <div className="text-8xl font-bold text-white mb-2 relative inline-block">
-                      {weatherData.temperature} <span className="absolute top-2 -right-12 text-5xl font-medium opacity-80">°C</span>
-                    </div>
+                                         <div className="text-8xl font-bold text-white mb-2 relative inline-block">
+                       {weatherData.temperature}<span className="absolute top-0 -right-8 text-3xl font-medium opacity-80">°C</span>
+                     </div>
                     <p className="text-white/80 text-lg">{weatherData.description}</p>
                     
                     <div className="mt-8 pt-8 border-t border-white/20">
