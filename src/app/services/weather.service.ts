@@ -1,5 +1,5 @@
 import { apiService } from './api/api.service'
-import type { WeatherLocation, WeatherData } from '../types/weather'
+import type { WeatherLocation, WeatherData, GeocodingResponse, WeatherApiResponse } from '../types/weather'
 
 export class WeatherService {
   private apiKey: string = ''
@@ -14,15 +14,15 @@ export class WeatherService {
     }
 
     try {
-      const response = await apiService.get(`/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=5&appid=${this.apiKey}`)
-      return response.map((item: any) => ({
+      const response = await apiService.get<GeocodingResponse[]>(`/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=5&appid=${this.apiKey}`)
+      return response.map((item: GeocodingResponse) => ({
         name: item.name,
         country: item.country,
         state: item.state,
         lat: item.lat,
         lon: item.lon
       }))
-    } catch (error) {
+    } catch {
       throw new Error('Failed to search locations')
     }
   }
@@ -33,7 +33,7 @@ export class WeatherService {
     }
 
     try {
-      const response = await apiService.get(`/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&units=metric&appid=${this.apiKey}`)
+      const response = await apiService.get<WeatherApiResponse>(`/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&units=metric&appid=${this.apiKey}`)
       
       return {
         location: {
@@ -50,7 +50,7 @@ export class WeatherService {
         visibility: Math.round(response.visibility / 1000), // Convert m to km
         icon: response.weather[0].icon
       }
-    } catch (error) {
+    } catch {
       throw new Error('Failed to get weather data')
     }
   }

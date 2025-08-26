@@ -1,7 +1,7 @@
 export class ApiService {
   private baseUrl = 'https://api.openweathermap.org'
 
-  async get(endpoint: string): Promise<any> {
+  async get<T = unknown>(endpoint: string): Promise<T> {
     const url = `${this.baseUrl}${endpoint}`
     
     try {
