@@ -39,7 +39,9 @@ export class WeatherService {
         location: {
           name: location.name,
           country: location.country,
-          state: location.state
+          state: location.state,
+          lat: location.lat,
+          lon: location.lon
         },
         temperature: Math.round(response.main.temp),
         description: response.weather[0].description,
