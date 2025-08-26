@@ -11,44 +11,6 @@ A modern React weather application built with TypeScript that allows users to se
 - **Responsive Design**: Beautiful glass-morphism UI with Tailwind CSS
 - **TypeScript**: Full type safety throughout the application
 
-## Architecture
-
-The app follows a modular architecture inspired by Angular patterns:
-
-```
-src/
-├── app/
-│   ├── core/                # Core services, interceptors, guards
-│   │   └── services/
-│   │       └── api.service.ts        # Base HTTP service
-│   │
-│   ├── features/            # Feature modules
-│   │   └── weather/
-│   │       ├── components/
-│   │       │   └── weather-card.component.ts
-│   │       ├── pages/
-│   │       │   └── weather-page.component.ts
-│   │       └── services/
-│   │           └── weather.service.ts
-│   │
-│   ├── shared/              # Reusable components, pipes
-│   │   ├── components/
-│   │   │   └── spinner.component.ts
-│   │   └── pipes/
-│   │       └── capitalize.pipe.ts
-│   │
-│   ├── components/          # App-level components
-│   │   ├── ApiConfig.tsx
-│   │   ├── SearchSection.tsx
-│   │   └── ResultsSection.tsx
-│   │
-│   └── types/               # TypeScript interfaces
-│       └── weather.ts
-│
-├── App.tsx                  # Main app component
-└── main.tsx                 # App entry point
-```
-
 ## Getting Started
 
 ### Prerequisites
