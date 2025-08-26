@@ -52,7 +52,6 @@ export default function WeatherPage() {
     try {
       const weather = await weatherService.getWeather(location)
       setWeatherData(weather)
-      // Don't clear search results - keep them visible
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to get weather data')
     } finally {
