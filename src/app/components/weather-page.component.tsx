@@ -64,42 +64,42 @@ export default function WeatherPage() {
   }
 
   return (
-    <>
-        <header id="header" className="bg-transparent px-6 py-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-3">
-                <i className="fa-solid fa-cloud-sun text-4xl text-white"></i>
-                <h1 className="text-4xl font-bold text-white tracking-tight">Weather Finder</h1>
-            </div>
-            <p className="text-lg text-white/80 mt-2">Get real-time temperature data for any location worldwide</p>
-          </div>
-        </header>
+         <>
+         <header id="header" className="bg-transparent px-4 sm:px-6 py-4 sm:py-6">
+           <div className="max-w-4xl mx-auto text-center">
+             <div className="flex items-center justify-center gap-2 sm:gap-3">
+                 <i className="fa-solid fa-cloud-sun text-2xl sm:text-3xl md:text-4xl text-white"></i>
+                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">Weather Finder</h1>
+             </div>
+             <p className="text-sm sm:text-base md:text-lg text-white/80 mt-2">Get real-time temperature data for any location worldwide</p>
+           </div>
+         </header>
 
-        <main id="main" className="max-w-4xl mx-auto px-6 py-8 flex-grow w-full">
-          <div id="api-config" className="bg-glass-bg border border-glass-border rounded-2xl p-6 mb-8 backdrop-blur-lg shadow-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <i className="fa-solid fa-key text-white/80 text-xl"></i>
-              <h2 className="text-xl font-semibold text-white">API Configuration</h2>
+        <main id="main" className="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8 flex-grow w-full">
+          <div id="api-config" className="bg-glass-bg border border-glass-border rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 backdrop-blur-lg shadow-2xl">
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <i className="fa-solid fa-key text-white/80 text-lg sm:text-xl"></i>
+              <h2 className="text-lg sm:text-xl font-semibold text-white">API Configuration</h2>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block text-sm font-medium text-white/90 mb-2">OpenWeatherMap API Token</label>
+                <label className="block text-xs sm:text-sm font-medium text-white/90 mb-2">OpenWeatherMap API Token</label>
                 <input
                   type="password"
                   value={apiToken}
                   onChange={(e) => setApiToken(e.target.value)}
                   placeholder="Enter your API token here..."
-                  className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-white/50"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black/30 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-white/50 text-sm sm:text-base"
                 />
                 <p className="text-xs text-white/60 mt-2">Your key is required to fetch weather data. Get it free from openweathermap.org</p>
               </div>
             </div>
           </div>
 
-          <div id="search-section" className="bg-glass-bg border border-glass-border rounded-2xl p-6 mb-8 backdrop-blur-lg shadow-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <i className="fa-solid fa-magnifying-glass text-white/80 text-xl"></i>
-              <h2 className="text-xl font-semibold text-white">Search Location</h2>
+          <div id="search-section" className="bg-glass-bg border border-glass-border rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 backdrop-blur-lg shadow-2xl">
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <i className="fa-solid fa-magnifying-glass text-white/80 text-lg sm:text-xl"></i>
+              <h2 className="text-lg sm:text-xl font-semibold text-white">Search Location</h2>
             </div>
             <div className="relative">
               <input
@@ -108,11 +108,11 @@ export default function WeatherPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleKeyPress}
                 placeholder="Enter city name and press Enter..."
-                className="w-full px-5 py-4 pr-12 bg-black/30 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-white/50 text-lg"
+                className="w-full px-3 sm:px-5 py-3 sm:py-4 pr-10 sm:pr-12 bg-black/30 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-white/50 text-sm sm:text-base md:text-lg"
                 disabled={isLoading}
               />
-              <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                <i className="fa-solid fa-search text-white/50"></i>
+              <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2">
+                <i className="fa-solid fa-search text-white/50 text-sm sm:text-base"></i>
               </div>
             </div>
           </div>
@@ -167,21 +167,21 @@ export default function WeatherPage() {
                       key={`${location.name}-${location.country}-${location.state}-${index}`}
                       className="bg-black/20 rounded-lg p-4 hover:bg-black/40 cursor-pointer transition-all duration-300 transform hover:scale-[1.02]"
                     >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="text-lg font-medium text-white">{location.name}</h3>
-                          <p className="text-sm text-white/70">
-                            {location.country}
-                            {location.state && `, ${location.state}`}
-                          </p>
+                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                          <div>
+                            <h3 className="text-base sm:text-lg font-medium text-white">{location.name}</h3>
+                            <p className="text-xs sm:text-sm text-white/70">
+                              {location.country}
+                              {location.state && `, ${location.state}`}
+                            </p>
+                          </div>
+                          <button 
+                            className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-blue-500 transition-colors font-semibold shadow-lg w-full sm:w-auto"
+                            onClick={() => handleLocationSelect(location)}
+                          >
+                            Get Temperature
+                          </button>
                         </div>
-                        <button 
-                          className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-blue-500 transition-colors font-semibold shadow-lg"
-                          onClick={() => handleLocationSelect(location)}
-                        >
-                          Get Temperature
-                        </button>
-                      </div>
                     </div>
                   ))}
                 </>
