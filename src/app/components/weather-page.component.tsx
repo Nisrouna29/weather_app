@@ -205,13 +205,12 @@ export default function WeatherPage() {
                   </div>
                 ) : weatherData ? (
                   <>
-                    <div className="flex items-center justify-center gap-3 mb-4">
-                      <i className="fa-solid fa-location-dot text-white/80 text-2xl"></i>
-                      <h3 className="text-3xl font-semibold text-white">
-                        {weatherData.location.name}, {weatherData.location.country}
-                        {weatherData.location.state && `, ${weatherData.location.state}`}
-                      </h3>
-                    </div>
+                                         <div className="flex items-center justify-center gap-3 mb-4">
+                       <h3 className="text-3xl font-semibold text-white">
+                         {weatherData.location.name}, {weatherData.location.country}
+                         {weatherData.location.state && `, ${weatherData.location.state}`}
+                       </h3>
+                     </div>
                     
                                          <div className="text-8xl font-bold text-white mb-2 relative inline-block">
                        {weatherData.temperature}<span className="absolute top-0 -right-8 text-3xl font-medium opacity-80">°C</span>
