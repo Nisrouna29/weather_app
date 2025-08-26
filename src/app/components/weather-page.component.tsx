@@ -64,45 +64,39 @@ export default function WeatherPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-800 via-pink-700 to-rose-600 text-white">
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <header className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <i className="fa-solid fa-cloud-sun text-4xl text-white"></i>
-            <h1 className="text-4xl font-bold text-white">Weather Finder</h1>
+    <>
+        <header id="header" className="bg-transparent px-6 py-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-3">
+                <i className="fa-solid fa-cloud-sun text-4xl text-white"></i>
+                <h1 className="text-4xl font-bold text-white tracking-tight">Weather Finder</h1>
+            </div>
+            <p className="text-lg text-white/80 mt-2">Get real-time temperature data for any location worldwide</p>
           </div>
-          <p className="text-xl text-orange-200">Get real-time temperature data for any location worldwide</p>
         </header>
 
-        {/* Main Content */}
-        <div className="max-w-4xl mx-auto space-y-6">
-          {/* API Configuration Card */}
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 shadow-xl">
+        <main id="main" className="max-w-4xl mx-auto px-6 py-8 flex-grow w-full">
+          <div id="api-config" className="bg-glass-bg border border-glass-border rounded-2xl p-6 mb-8 backdrop-blur-lg shadow-2xl">
             <div className="flex items-center gap-3 mb-4">
               <i className="fa-solid fa-key text-white/80 text-xl"></i>
               <h2 className="text-xl font-semibold text-white">API Configuration</h2>
             </div>
-            <div className="mb-3">
-              <label className="block text-white/80 text-sm mb-2">OpenWeatherMap API Token</label>
-              <input
-                type="text"
-                value={apiToken}
-                onChange={(e) => setApiToken(e.target.value)}
-                placeholder="Enter your API token here..."
-                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 text-white placeholder-white/60"
-              />
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-white/90 mb-2">OpenWeatherMap API Token</label>
+                <input
+                  type="password"
+                  value={apiToken}
+                  onChange={(e) => setApiToken(e.target.value)}
+                  placeholder="Enter your API token here..."
+                  className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-white/50"
+                />
+                <p className="text-xs text-white/60 mt-2">Your key is required to fetch weather data. Get it free from openweathermap.org</p>
+              </div>
             </div>
-            <p className="text-white/60 text-sm">
-              Your key is required to fetch weather data. Get it free from{' '}
-              <a href="https://openweathermap.org" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline">
-                openweathermap.org
-              </a>
-            </p>
           </div>
 
-          {/* Search Location Card */}
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 shadow-xl">
+          <div id="search-section" className="bg-glass-bg border border-glass-border rounded-2xl p-6 mb-8 backdrop-blur-lg shadow-2xl">
             <div className="flex items-center gap-3 mb-4">
               <i className="fa-solid fa-magnifying-glass text-white/80 text-xl"></i>
               <h2 className="text-xl font-semibold text-white">Search Location</h2>
@@ -114,11 +108,11 @@ export default function WeatherPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleKeyPress}
                 placeholder="Enter city name and press Enter..."
-                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 text-white placeholder-white/60 pr-12"
+                className="w-full px-5 py-4 pr-12 bg-black/30 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-white placeholder-white/50 text-lg"
                 disabled={isLoading}
               />
               <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                <i className="fa-solid fa-magnifying-glass text-white/40"></i>
+                <i className="fa-solid fa-search text-white/50"></i>
               </div>
             </div>
           </div>
@@ -138,52 +132,51 @@ export default function WeatherPage() {
             </div>
           )}
 
-          {/* Search Results Card */}
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 shadow-xl">
+          <div id="results-section" className="bg-glass-bg border border-glass-border rounded-2xl p-6 mb-8 backdrop-blur-lg shadow-2xl">
             <div className="flex items-center gap-3 mb-4">
               <i className="fa-solid fa-list text-white/80 text-xl"></i>
               <h2 className="text-xl font-semibold text-white">Search Results</h2>
             </div>
             
-            <div className="text-center py-8 text-orange-200">
+            <div id="results-list" className="space-y-3">
               {!hasSearched && (
-                <div>
-                  <i className="fa-solid fa-search text-4xl mb-4 text-white/40"></i>
-                  <p className="text-sm">Search for a city to see available locations</p>
+                <div className="text-center py-8 text-white/60">
+                  <i className="fa-solid fa-search text-4xl mb-4"></i>
+                  <p>Search for a city to see available locations</p>
                 </div>
               )}
               
               {hasSearched && isLoading && (
-                <div>
-                  <i className="fa-solid fa-spinner fa-spin text-4xl mb-4 text-white/40"></i>
-                  <p className="text-sm">Searching for locations...</p>
+                <div className="text-center py-8 text-white/60">
+                  <i className="fa-solid fa-spinner fa-spin text-4xl mb-4"></i>
+                  <p>Searching for locations...</p>
                 </div>
               )}
               
               {hasSearched && !isLoading && searchResults.length === 0 && (
-                <div>
-                  <i className="fa-solid fa-cloud-moon text-4xl mb-4 text-white/40"></i>
-                  <p className="text-sm">No locations found for this search</p>
+                <div className="text-center py-8 text-white/60">
+                  <i className="fa-solid fa-cloud-moon text-4xl mb-4"></i>
+                  <p>No locations found for this search</p>
                 </div>
               )}
               
               {hasSearched && !isLoading && searchResults.length > 0 && (
-                <div className="space-y-3">
+                <>
                   {searchResults.map((location, index) => (
                     <div 
                       key={`${location.name}-${location.country}-${location.state}-${index}`}
-                      className="bg-white/20 rounded-lg p-4 hover:bg-white/30 transition-colors"
+                      className="bg-black/20 rounded-lg p-4 hover:bg-black/40 cursor-pointer transition-all duration-300 transform hover:scale-[1.02]"
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                      <div className="flex items-center justify-between">
                         <div>
                           <h3 className="text-lg font-medium text-white">{location.name}</h3>
-                          <p className="text-sm text-orange-200">
+                          <p className="text-sm text-white/70">
                             {location.country}
                             {location.state && `, ${location.state}`}
                           </p>
                         </div>
                         <button 
-                          className="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-600 transition-colors font-semibold w-full sm:w-auto focus:outline-none"
+                          className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-blue-500 transition-colors font-semibold shadow-lg"
                           onClick={() => handleLocationSelect(location)}
                         >
                           Get Temperature
@@ -191,70 +184,72 @@ export default function WeatherPage() {
                       </div>
                     </div>
                   ))}
-                </div>
+                </>
               )}
             </div>
           </div>
 
-          {/* Current Weather Card */}
-          {weatherData && (
-            <div className="bg-gradient-to-br from-orange-500/40 via-pink-500/40 to-rose-500/40 backdrop-blur-md border border-white/30 rounded-2xl p-6 shadow-2xl">
+          {/* Current Weather Card - Only show when weatherData exists or is loading */}
+          {(weatherData || isWeatherLoading) && (
+            <div id="temperature-display" className="bg-gradient-to-br from-blue-500/30 to-teal-400/30 border border-glass-border rounded-2xl p-6 backdrop-blur-lg shadow-2xl">
               <div className="flex items-center gap-3 mb-6">
                 <i className="fa-solid fa-thermometer-half text-white/80 text-xl"></i>
                 <h2 className="text-xl font-semibold text-white">Current Weather</h2>
               </div>
               
-              <div className="text-center">
+              <div id="temperature-data" className="text-center">
                 {isWeatherLoading ? (
                   <div className="py-12">
                     <i className="fa-solid fa-spinner fa-spin text-8xl text-white/80 mb-8"></i>
                     <p className="text-xl text-white/80">Loading weather data...</p>
                   </div>
-                ) : (
+                ) : weatherData ? (
                   <>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2 sm:gap-3 mb-6">
-                      <i className="fa-solid fa-location-dot text-white/80 text-xl sm:text-2xl"></i>
-                      <h3 className="text-lg sm:text-2xl font-semibold text-white text-center sm:text-left">
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                      <i className="fa-solid fa-location-dot text-white/80 text-2xl"></i>
+                      <h3 className="text-3xl font-semibold text-white">
                         {weatherData.location.name}, {weatherData.location.country}
                         {weatherData.location.state && `, ${weatherData.location.state}`}
                       </h3>
                     </div>
                     
-                    <div className="text-6xl sm:text-8xl font-bold text-white mb-4">
-                      {weatherData.temperature}°C
+                    <div className="text-8xl font-bold text-white mb-2 relative inline-block">
+                      {weatherData.temperature} <span className="absolute top-2 -right-12 text-5xl font-medium opacity-80">°C</span>
                     </div>
-                    <p className="text-lg sm:text-xl text-orange-200 mb-6 sm:mb-8">{weatherData.description}</p>
+                    <p className="text-white/80 text-lg">{weatherData.description}</p>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 text-center">
-                      <div className="bg-white/10 rounded-lg p-4">
-                        <i className="fa-solid fa-eye text-white/80 text-xl sm:text-2xl mb-2"></i>
-                        <p className="text-white/80 text-xs sm:text-sm">Visibility</p>
-                        <p className="text-white font-semibold text-base sm:text-lg">{weatherData.visibility} km</p>
-                      </div>
-                      <div className="bg-white/10 rounded-lg p-4">
-                        <i className="fa-solid fa-droplet text-white/80 text-xl sm:text-2xl mb-2"></i>
-                        <p className="text-white/80 text-xs sm:text-sm">Humidity</p>
-                        <p className="text-white font-semibold text-base sm:text-lg">{weatherData.humidity}%</p>
-                      </div>
-                      <div className="bg-white/10 rounded-lg p-4">
-                        <i className="fa-solid fa-wind text-white/80 text-xl sm:text-2xl mb-2"></i>
-                        <p className="text-white/80 text-xs sm:text-sm">Wind</p>
-                        <p className="text-white font-semibold text-base sm:text-lg">{weatherData.windSpeed} km/h</p>
+                    <div className="mt-8 pt-8 border-t border-white/20">
+                      <div className="grid grid-cols-3 gap-4 text-sm">
+                        <div className="text-center">
+                          <i className="fa-solid fa-eye text-white/70 text-2xl mb-2"></i>
+                          <p className="text-white/70">Visibility</p>
+                          <p className="text-white font-semibold text-lg">{weatherData.visibility} km</p>
+                        </div>
+                        <div className="text-center">
+                          <i className="fa-solid fa-droplet text-white/70 text-2xl mb-2"></i>
+                          <p className="text-white/70">Humidity</p>
+                          <p className="text-white font-semibold text-lg">{weatherData.humidity}%</p>
+                        </div>
+                        <div className="text-center">
+                          <i className="fa-solid fa-wind text-white/70 text-2xl mb-2"></i>
+                          <p className="text-white/70">Wind</p>
+                          <p className="text-white font-semibold text-lg">{weatherData.windSpeed} km/h</p>
+                        </div>
                       </div>
                     </div>
                   </>
-                )}
+                ) : null}
               </div>
             </div>
           )}
-        </div>
+        </main>
 
-        {/* Footer */}
-        <footer className="text-center mt-16 text-orange-200">
-          <p>Powered by the OpenWeatherMap API</p>
-          <p className="text-sm mt-1">© 2025 Weather Finder</p>
+        <footer id="footer" className="bg-transparent px-6 py-8 mt-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-sm text-white/70">Powered by the OpenWeatherMap API</p>
+            <p className="text-xs text-white/50 mt-1">© 2025 Weather Finder</p>
+          </div>
         </footer>
-      </div>
-    </div>
+    </>
   )
 }

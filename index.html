@@ -1,33 +1,73 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Finder</title>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              poppins: ["Poppins", "sans-serif"],
-              sans: ["Inter", "sans-serif"]
-            },
-            colors: {
-              "brand-primary": "#4A90E2",
-              "brand-secondary": "#50E3C2",
-              "glass-bg": "rgba(255, 255, 255, 0.1)",
-              "glass-border": "rgba(255, 255, 255, 0.2)"
-            }
-          }
-        }
-      };
-    </script>
-  </head>
-  <body>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>tailwind.config = {
+"theme": {
+"extend": {
+  "fontFamily": {
+    "poppins": [
+      "Poppins",
+      "sans-serif"
+    ],
+    "sans": [
+      "Inter",
+      "sans-serif"
+    ]
+  },
+  "colors": {
+    "brand-primary": "#4A90E2",
+    "brand-secondary": "#50E3C2",
+    "glass-bg": "rgba(255, 255, 255, 0.1)",
+    "glass-border": "rgba(255, 255, 255, 0.2)"
+  }
+}
+}
+ };</script>
+ <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+   body {
+     font-family: 'Inter', sans-serif !important;
+   }
+   
+   /* Preserve Font Awesome icons */
+   .fa, .fas, .far, .fal, .fab {
+     font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+   }
+ </style><style>
+.highlighted-section {
+outline: 2px solid #3F20FB;
+background-color: rgba(63, 32, 251, 0.1);
+}
+
+.edit-button {
+position: absolute;
+z-index: 1000;
+}
+
+::-webkit-scrollbar {
+display: none;
+}
+
+html, body {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+</style></head>
+ <body class="bg-gray-900 text-white relative font-sans">
+     <div class="absolute inset-0 z-0">
+          <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/e16907b767-d3177f6dd7934f34cc0e.png" alt="A stunning, high-resolution photograph of a serene coastal landscape with lush green forests meeting a calm blue sea under a clear sky, perfect for a weather app background, photorealistic style.">
+          <div class="absolute inset-0 bg-black/50"></div>
+     </div>
+
+     <div class="relative z-10 min-h-screen flex flex-col">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+     </div>
+
+ </body></html>
